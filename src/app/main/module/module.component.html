@@ -1,0 +1,66 @@
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side" opened="true">
+    <div class="progress-container">
+      <span>Progress</span>
+      <div class="circle">
+        <span>{{ percentage(quizData.length, quiz.length) }}%</span>
+      </div>
+    </div>
+    <hr>
+    <div class="module-container" *ngFor="let les of lesson">
+      <div class="module-title">
+        {{ les.name }}
+      </div>
+      <div class="lesson-container" *ngFor="let topic of les.lessons">
+        <a class="lesson-title" routerLink="/main/modules/{{ les.codes }}/{{ topic.id }}" (click)="getLessonId(les.codes, topic.id)">
+          {{ topic.title }}
+        </a>
+      </div>
+    </div>
+  </mat-drawer>
+
+  <mat-toolbar>
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+   
+    
+  </mat-toolbar>
+
+  <div class="container">
+      <div class="topic-container" *ngFor="let top of topic">
+        <div *ngIf="top.isQuiz == false">
+          <h1>{{ top.name}}</h1>
+          <p>{{ top.firstp }}</p>
+          <p>{{ top.secondp }}</p>
+          <p>{{ top.thirdp }}</p>
+
+          <img [src]="top.img" alt="Module Images">
+          <p>{{ top.example }}</p>
+          <!-- <a class="external"[href]="top.lessonLink">
+          <p>Click this to view full lesson</p></a> -->
+        </div>
+        <div *ngIf="top.isQuiz == true">
+          <h1>{{ top.name }}</h1>
+
+          <div class="quiz-container" *ngFor="let quiz of top.quizes">
+            <p>{{ quiz.quiznum }} ({{ quiz.difficulty }})</p>
+            <div class="result">
+              <span>Score: {{ getQuizScore(quiz.id) }}/{{ quiz.score }}</span>
+              <button mat-button [disabled]="checkQuizNumber(quiz.id)" (click)="takeQuiz(quiz.id, quiz.score, moduleId, lessonId)">
+                <p *ngIf="checkQuizNumber(quiz.id)">Already Done</p>
+                <p *ngIf="!checkQuizNumber(quiz.id)">Take the Quiz</p>
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    
+    <!-- <div class="center-message" >
+      <p>Welcome to Project: PRAISE Learners! We are here to guide you on a successful learning journey!</p>
+    </div> -->
+    
+  </div>
+
+</mat-drawer-container>

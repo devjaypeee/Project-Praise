@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Quiz Summary for {{ fetch.name }}</h2>
+    <table>
+        <thead>
+          <tr>
+            <td>Module</td>
+            <td>Quiz Number</td>
+            <td>Difficulty</td>
+            <td>Score</td>
+            <td>Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let quiz of quizData">
+            <td>{{ getModuleName(quiz.quizno_fld) }}</td>
+            <td>{{ getQuizNum(quiz.quizno_fld) }}</td>
+            <td>{{ getQuizDiff(quiz.quizno_fld) }}</td>
+            <td>{{ quiz.score_fld }}/{{ getQuizLength(quiz.quizno_fld) }}</td>
+            <td>
+              <button button mat-flat-button color="primary" (click)="retakeQuiz(quiz.quizid_fld)">Retake Quiz</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <div class="center" *ngIf="quizData.length == 0">No data available.</div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+    <h2>Student Registration</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstname" required="true">
+          
+        </mat-form-field>
+     
+        <div class="user-info">
+          <mat-form-field appearance="outline">
+            <mat-label>Middle Name</mat-label>
+            <input matInput formControlName="middlename">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="right-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastname" required="true">
+          </mat-form-field>
+        </div>
+     
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required="true">
+        </mat-form-field>
+     
+        <div class="user-info">
+          <mat-form-field appearance="outline" >
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="passwordone" required="true">
+          </mat-form-field>
+     
+          <mat-form-field appearance="outline" class="right-field">
+            <mat-label>Repeat Password</mat-label>
+            <input matInput type="password" formControlName="passwordtwo" required="true">
+          </mat-form-field>
+        </div>
+        
+     
+        <button class="sign-in" mat-raised-button type="submit" color="primary" [disabled]="registerForm.value.passwordone != registerForm.value.passwordtwo || registerForm.value.passwordtwo <= 4 " (click)="register()">
+          <span>Register</span>
+        </button>
+    </form>
+</div>

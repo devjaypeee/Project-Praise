@@ -1,0 +1,62 @@
+.container {
+    padding: 20px;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px auto;
+
+    }
+    
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    thead tr {
+        width: 25%;
+
+        td {
+            font-weight: 600;
+        }
+    }
+
+    .progress {
+        border: none;
+        outline: none;
+        width: 100%;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #00aab3c4;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+
+        .circle {
+            border: 3px solid #fff;
+            border-radius: 500px;
+            width: 35px;
+            height: 35px;
+            padding: 5px;
+            margin: 0 5px;
+
+            span {
+                position: relative;
+                top: 9px;
+                right: 4px;
+                text-align: center;
+            }
+        }
+
+        span {
+            margin: 0 5px;
+        }
+    }
+}

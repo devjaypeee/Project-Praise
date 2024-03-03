@@ -1,0 +1,23 @@
+<div class="content">
+    <div class="card">
+        <div class="card-container" *ngFor="let book of bookList">
+            <img [src]="book.img" alt="Module Images" width="100%">
+            <div class="card-header">
+                <!-- <h3>Read and Write and Wrote and Read</h3> -->
+                <mat-card>
+                    <mat-card-body>
+                      <mat-card-title>
+                        <h4>{{book.title}}</h4>
+                      </mat-card-title>
+
+                      <mat-card-text>
+                        <!-- {{book.description}} -->
+                      </mat-card-text>
+                   </mat-card-body>
+                </mat-card>
+                  
+            </div>
+            <a class="external" [href]="book.lessonLink"><mat-icon>launch</mat-icon></a>
+        </div>
+    </div>
+</div>

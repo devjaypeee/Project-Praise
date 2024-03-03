@@ -1,0 +1,103 @@
+// mat-toolbar {
+//     justify-content: space-between;
+// }
+
+// img {
+//     margin-top: 30px;
+//     height: 30%;
+// }
+
+// mat-card-title {
+//     margin-top: 30px;
+//     font-size: 25px;
+// }
+
+.content {
+    // display: flex;
+    // align-items: flex-start;
+    // justify-content: center;
+    width: 95%;
+    margin: 10px auto;
+
+    .card {
+        display: grid;
+        width: 100%;
+        grid-gap: 10px;
+        grid-template-columns: repeat(12, 1fr);
+    
+        .card-container {
+            height: 230px;
+            width: calc(100% / 25%);
+            grid-column: span 3;
+            overflow: hidden;
+            border-radius: 5px;
+            position: relative;
+            top: 0;
+            left: 0;
+
+            .card-header {
+                position: absolute;
+                bottom: 0;
+                left: 10px;
+
+                h3 {
+                    color: #fff;
+                }
+            }
+
+
+            .external {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                color:#fff !important;
+            }
+            img {
+                position:absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: flex;
+                filter: brightness(40%);
+                z-index: 0;
+                transition: 0.2s ease;
+                &:hover{
+                    scale: 1.1;
+                }
+            }
+        }
+    }
+
+    mat-card {
+        font-size: 10px;
+        color: #fff;
+    
+    button {
+        
+        margin-bottom: 5px;
+        color: #00ABB3;
+        
+        
+    }
+}
+}
+
+@media only screen and (max-width: 768px) {
+    .content {
+        .card {
+            .card-container {
+                grid-column: span 6;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .content {
+        .card {
+            .card-container {
+                grid-column: span 12;
+            }
+        }
+    }
+}

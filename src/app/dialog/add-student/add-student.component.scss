@@ -1,0 +1,26 @@
+.container {
+    width: 100%;
+
+    mat-form-field, button {
+        width: 100%;
+        font-family: var(--font-primary);
+        // margin: 5px;
+
+        // .hide-button {
+        //   background-color: #fff;
+        //   position: relative;
+        //   bottom: 5px;
+        // }
+
+        // input {
+        //   padding: 4px 24px;
+        // }
+    }
+
+    .center {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        font-size: 18px;
+    }
+}

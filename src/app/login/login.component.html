@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+      <div class="col-8">
+        <!-- Insert tags here -->
+        
+      </div>
+      <div class="col-4">
+        <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid">
+        <!-- <form> -->
+           <img mat-card-image src="assets/iconlogo.png">
+          <div class="title">
+              <span>Project: PRAISE</span>
+              <span>Tapinac Senior High School</span>
+          </div>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Student/Personel Number</mat-label>
+            <input matInput formControlName="studentno" required="true">
+            <mat-error *ngIf="!loginForm.value.studentno || loginForm.invalid">Enter a Valid Username</mat-error>
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text' " type="password" formControlName="password" required="true">
+            <button class="hide-button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="!loginForm  .value.password">Password is required</mat-error>
+          </mat-form-field>
+    
+          <button class="sign-in" mat-raised-button type="submit" color="primary" [disabled]="clicked || !loginForm.value.password" (click)="login(); clicked = true">
+            <span *ngIf="clicked == false">Sign in</span>
+            <span *ngIf="clicked == true">Loading</span>
+            <mat-spinner [diameter]="30" *ngIf="clicked == true"></mat-spinner>
+          </button>
+          <!-- <p>{{ message }}</p><br><br> -->
+          <!-- <footer>GCEVS version {{version}}</footer> -->
+        </form>
+      </div>
+    </div>
+  </div>

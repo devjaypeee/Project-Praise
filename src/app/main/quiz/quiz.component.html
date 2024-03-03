@@ -1,0 +1,33 @@
+<button mat-flat-button color="primary" (click)="backToMain()">
+    <mat-icon>arrow_back</mat-icon>
+     Back To Modules
+</button>
+<div class="container" *ngFor="let quiz of quizList">
+<div *ngIf="quiz.id == quizId">
+    <p class="instruction">Instruction: {{ quiz.instruction }}</p>
+        <div *ngIf="quiz.story">
+            <div class="story" [innerHTML]="quiz.story">
+                
+            </div>
+        </div>
+        <div class="question" *ngFor="let questions of quiz.questions">
+            <p class="statement">{{ questions.id }}. {{ questions.question }}</p>
+            
+            <div class="answer" *ngFor="let choices of questions.choice" >
+                <mat-radio-button type="radio" [name]="questions.question" value="." [checked]="false" (change)="onItemChange(questions.id, choices.letter, questions.answer)"></mat-radio-button>
+                {{ choices.letter }}. {{ choices.choices }}
+            </div>
+        </div>
+
+        <div class="result-container">
+            <button button mat-flat-button color="primary" [disabled]="answerList.length != qtyId || isSubmitted" class="submit" (click)="submit(); isSubmitted = true">Submit your Quiz</button>  
+
+            <div *ngIf="isSubmitted">
+                <div class="result" *ngIf="quizScore <= halfScore">
+                    <span>Oh no! You have got <strong>{{ quizScore }} out of {{ qtyId }}</strong></span>
+                    <button button mat-flat-button color="primary" (click)="reload()">Retake Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
